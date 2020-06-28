@@ -1,0 +1,12 @@
+.home-nav,.body-container, .body2-container,.body3-container{ 
+    border-radius: 50px;
+    margin: 2em 2em 2em 2em;
+    padding: 1em 2em 2em 2em;
+}
+.nav-bar{
+    display: flex;
+    justify-content: space-evenly;
+    border-radius: 50px;
+    margin: 2em em 2em 2em;
+    padding: 1em 2em 2em 2em;
+}

@@ -1,21 +1,22 @@
 :root{
     --color1: rgb(235, 231, 222);
+    --color2: rgba(49, 48, 48, 0.678);
 }
 html{
-    background-image: url("");
-background-repeat: no-repeat;
-background-size: cover;
-font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-font-size: 2em;
-color: var(--color1);
-}
-
-a {
-    text-decoration: none;
+    background-image: url("https://raw.githubusercontent.com/2020-Summer-Cohort/blog-java-optimistic-wanderer/master/src/main/resources/Static/images/front%20water%20fall%20forest.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 2em;
     color: var(--color1);
-}
-
-.home-nav{
-    background-color:rgba(134, 120, 120, 0.466);
-    color:Var(--color1);
-}
+    }
+    
+    a {
+        text-decoration: none;
+        color:var(--color1);
+    }
+    
+    .home-nav,.body-container, .body2-container,.body3-container{
+        background-color:var(--color2);
+        color:Var(--color1);
+    }
