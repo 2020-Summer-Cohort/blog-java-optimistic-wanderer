@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title th:text="${tag.name}">Hashtags</title>
+    <link rel="park-list-style" href="./src/main/resources/Static/css/park-trail-list-layout.css"/>
+    <link rel="park-list-style" href="./src/main/resources/Static/css/park-trail-list-style.css"/>
+
+</head>
+<body>
+<nav class="home-nav">
+    <h1 class="name">Optimistic Wanderer</h1>
+    <div class="nav-bar">
+        <div class="nav-bar-list"><a href="./home.HTML">Home</a></div>
+        <div class="nav-bar-list"><a href="./category-list.html">Parks & Trails</a></div>
+        <div class="nav-bar-list"><a href="./author-list.html">Bloggers</a></div>
+    </div>
+</nav>
+<main>
+    <h2 th:text="${tag.name}">Hashtag</h2>
+    <section >
+        <a th:each="post:${tag.posts}" th:href="@{'/post/' + ${post.title}}">
+            <div class="post">
+                <h3 th:text="${post.title}">Title</h3>
+                <p th:text="${post.author.name}">Author</p>
+                <p th:text="${post.publishDate}">Posted On:</p>
+                <p th:text="${post.getFirstLine()}">Review
+                </p>
+            </div>
+        </a>
+    </section>
+</main>
+</body>
+</html>
