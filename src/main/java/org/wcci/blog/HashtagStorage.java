@@ -1,8 +1,7 @@
 package org.wcci.blog;
 
 import org.springframework.stereotype.Service;
-import org.wcci.blog.Hashtag;
-import org.wcci.blog.HashtagRepository;
+
 @Service
 public class HashtagStorage {
     HashtagRepository hashtagRepo;
