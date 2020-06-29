@@ -1,20 +1,33 @@
-:root{
+:root {
     --color1: rgb(235, 231, 222);
     --color2: rgba(49, 48, 48, 0.678);
 }
-html{
-    background-image: url("https://raw.githubusercontent.com/2020-Summer-Cohort/blog-java-optimistic-wanderer/master/src/main/resources/static/images/waterfall%20forest.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
-    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    font-size: 2em;
-    color: var(--color1);
-    }
     
     a {
         text-decoration: none;
         color:var(--color1);
     }
+html{
+    background-image: url("https://raw.githubusercontent.com/2020-Summer-Cohort/blog-java-optimistic-wanderer/master/src/main/resources/static/images/waterfall%20forest.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.5em;
+    color: var(--color1);
+}
+li {
+    list-style: none;
+
+}
+li a{
+    text-decoration: none;
+    color: white;
+    border: 2px solid white;
+    border-radius: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    line-height: 40px;
+}
     
     .home-nav,.body-container, .body2-container,.body3-container{
         background-color:var(--color2);
