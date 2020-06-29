@@ -27,7 +27,6 @@ public class Review {
     private Collection<Hashtag> hashtags;
     @ManyToMany
     private Collection<Comment> comments;
-
     protected Review() {
     }
 
@@ -100,4 +99,6 @@ public class Review {
     public void addComment(Comment commentToAdd) {comments.add(commentToAdd);
     }
 
+    public void addReview(Review reviewToAdd) {
+    }
 }

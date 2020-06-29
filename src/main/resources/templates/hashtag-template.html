@@ -5,9 +5,9 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title th:text="${tag.name}">Hashtags</title>
-    <link rel="stylesheet" href="./src/main/resources/Static/css/park-trail-list-layout.css"/>
-    <link rel="stylesheet" href="./src/main/resources/Static/css/park-trail-list-style.css"/>
+    <title th:text="'&#35' + ${hashtag.hashtag}">Hashtags</title>
+    <link rel="stylesheet" href="/css/home-layout.css"/>
+    <link rel="stylesheet" href="/css/home-style.css"/>
 
 </head>
 <body>
@@ -20,20 +20,23 @@
     </section>
 </nav>
 <main>
-    <h2 th:text="'&#35' + ${hashtag.hashtag}">Hashtag</h2>
-    <section >
-        <a th:each="review:${hashtag.reviews}" th:href="@{'/review/' + ${review.title}}">
+    <h2 class="body2-container" th:text="'&#35' + ${hashtag.hashtag}">Hashtag</h2>
+    <ul class="body-container" >
+        <li th:each="review:${hashtag.reviews}">
             <div class="post">
-<!--                <h3 th:text="${review.title}">Title</h3>-->
-<!--                <p th:text="${review.author.name}">Author</p>-->
-<!--                <p th:text="${review.publishDate}">Posted On:</p>-->
-<!--                <p th:text="${review.content}">Review-->
-<!--                </p>-->
+                <h3 th:text="${review.title}">Title</h3>
+                <p th:text="${review.postedDate}">Posted On:</p>
+                <p th:text="${review.content}">Review
+                </p>
             </div>
-        </a>
-    </section>
+        </li>
+    </ul>
 </main>
 <p>Are you already an Optimistic Wanderer interested in leaving a new blog for a new park or trail? If so, start here:</p>
-<div class="leave-blog"><a th:href="@{'/new-review'}">Leave a new trail blog!</a></div>
+<div class="leave-blog"><a th:href="@{'/new-review/'}">Leave a new trail blog here!</a></div>
+</div>
 </body>
+<footer class="footer-color">
+    <div class="footer-font">&copy; Christin Banerjee 2020</div>
+</footer>
 </html>

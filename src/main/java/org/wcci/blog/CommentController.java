@@ -37,13 +37,6 @@ public class CommentController {
         reviewStorage.save(review);
         return "redirect:/categories/";
     }
-    @GetMapping("comment/{id}")
-    public String showSingleComment(@PathVariable Long id, Model model) {
-        model.addAttribute("comment", commentRepo.findById(id).get());
-        model.addAttribute("comment1", commentRepo.findById(id).get());
-        model.addAttribute("comment2", commentRepo.findById(id).get());
 
-        return "review-template";
-    }
 }
 

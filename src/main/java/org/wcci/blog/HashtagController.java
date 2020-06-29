@@ -2,7 +2,6 @@ package org.wcci.blog;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,14 +22,14 @@ public class HashtagController {
     }
     @RequestMapping("hashtag/{hashtag}")
     public String showSingleHashTag(@PathVariable String hashtag, Model model) {
-        model.addAttribute("categories",categoryRepo.findAll());
+        model.addAttribute("hashtags", hashtagStorage.getAllHashtags());
         model.addAttribute("hashtag", hashtagStorage.findByHashtag(hashtag));
         return "hashtag-template";
     }
 
     @PostMapping("hashtags/add")
     public String addHashtag(String hashtag, String title) {
-        Hashtag hashtagToAdd = hashtagRepo.findByHashtag(hashtag) ;
+        Hashtag hashtagToAdd = hashtagRepo.findByHashtag(hashtag);
         if (hashtagToAdd == null) {
             hashtagToAdd = new Hashtag(hashtag);
             hashtagRepo.save(hashtagToAdd);
@@ -41,10 +40,4 @@ public class HashtagController {
         reviewStorage.save(review);
         return "redirect:/categories/";
     }
-    @GetMapping("hashtags/{id}")
-    public String showSingleHashtag(@PathVariable Long id, Model model) {
-        model.addAttribute("hashtag", hashtagRepo.findById(id).get());
-        return "hashtag-template";
-    }
-
 }

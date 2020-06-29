@@ -35,7 +35,5 @@ public class ReviewStorage {
         reviewRepo.save(review);
     }
 
-//    public Review findByDifficultyLevel(Category difficultyLevel) {
-//        return reviewRepo.findByDifficultyLevel(difficultyLevel);
-//    }
+
 }
