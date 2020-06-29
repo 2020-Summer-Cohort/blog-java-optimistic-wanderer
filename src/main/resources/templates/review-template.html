@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trail 1</title>
+    
+    <link rel="stylesheet" href="/css/review-layout.css"/>
+    <link rel="stylesheet" href="/css/review-style.css"/>
+</head>
+<body>
+<nav class="home-nav">
+    <h1 class="name">Optimistic Wanderer</h1>
+    <section class="nav-bar">
+        <div class="nav-bar-list" ><a th:href="@{'/'}">Home</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/categories/'}">Parks & Trails</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/author/'}">Blogger's Post</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/hashtag/'}">Hashtag</a></div>
+    </section>
+</nav>
+      <div class="body-container">
+      <h2 th:text="${review.title}">Trail 1</h2>
+<p th:text="${review.address}">Address:</p>
+<p th:text="${review.distance}">Trail Distance:</p>
+<p th:text="${review.difficultyLevel}">Difficulty Level:</p>
+<p th:text="${review.pathType}">Path Type:</p>
+<p th:text="${review.mapURL}">Trail Map:</p>
+<p th:text="${review.authors}">Optimistic Wanderer's Name: <a href="./author-bio.html">Blogger 1</a></p>
+<p th:text="${review.postedDate}">Posted On:</p>
+<p th:text="${review.content}">Optimistic Wanderer's Review:</p>
+      </div>
+      <div class="body2-container">
+<div><h3>Add a new comment to this trail:</h3>
+<p>Optimistic Wanderer's Name:</p>
+<p>Posted On:</p>
+<p>Optimistic Wanderer's Review:</p>
+</div>
+      </div>
+      <div class="body3-container">
+        <p>Are you already an Optimistic Wanderer interested in leaving a new blog for a new park or trail? If so, start here:</p>
+          <div class="leave-blog"><a th:href="@{'/new-review'}">Leave a new trail blog!</a></div>
+        </div>
+        </body>
+        <footer class="footer-color">
+            <div class="footer-font">&copy; Christin Banerjee 2020</div>
+          </footer>
+        </html>

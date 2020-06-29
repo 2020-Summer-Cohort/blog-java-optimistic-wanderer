@@ -6,18 +6,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Park & Trail List</title>    
-    <link rel="park-list-style" href="./src/main/resources/Static/css/park-trail-list-layout.css"/>
-    <link rel="park-list-style" href="./src/main/resources/Static/css/park-trail-list-style.css"/>
+    <link rel="stylesheet" href="/css/category-list-layout.css"/>
+    <link rel="stylesheet" href="/css/category-list-style.css"/>
 </head>
 <body>
-  <nav class="home-nav">
+<nav class="home-nav">
     <h1 class="name">Optimistic Wanderer</h1>
-        <div class="nav-bar">
-          <div class="nav-bar-list"><a href="./home.HTML">Home</a></div>
-          <div class="nav-bar-list"><a href="./category-list.html">Parks & Trails</a></div>
-          <div class="nav-bar-list"><a href="./author-list.html">Bloggers</a></div>
-        </div>
-      </nav>
+    <section class="nav-bar">
+        <div class="nav-bar-list" ><a th:href="@{'/'}">Home</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/categories/'}">Parks & Trails</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/author/'}">Blogger's Post</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/hashtag/'}">Hashtag</a></div>
+    </section>
+</nav>
       <div class="body-container">
 <p>
  Are you already or interested in becoming an Optimistic Wanderer? If so, this is a great spot to start. 
@@ -29,12 +30,15 @@
  Join the conversation. Get out and get moving! Nature is calling! 
 </p>
 <nav>
-  <ul>
-    <li><a href="./review.html">Trail 1</a></li>
+  <ul >
+       <li class="flex-item" th:each="categoryNav:${categories}" >
+      <a class="navlink-color" th:text="${categoryNav.difficultyLevel}"
+       th:href="@{'/categories/' + ${categoryNav.difficultyLevel}}">Trail 1</a>
+       </li>
   </ul>
 </nav>
 <p>Are you already an Optimistic Wanderer interested in leaving a new blog for a new park or trail? If so, start here:</p>
-<div class="leave-blog"><a href="./new-review.html">Leave a new trail blog!</a></div>
+          <div class="leave-blog"><a th:href="@{'/new-review'}">Leave a new trail blog!</a></div>
 </div>
 </body>
 <footer class="footer-color">

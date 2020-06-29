@@ -26,6 +26,8 @@ public class Review {
     @ManyToMany
     private Collection<Hashtag> hashtags;
 
+    protected Review() {
+    }
 
     public Review(String title, String address, Double distance, String pathType, String difficultyLevel, String mapURL, String postedDate, String content, Author authors, Hashtag... hashtags) {
         this.title = title;

@@ -17,6 +17,7 @@ html{
     }
     
     .home-nav,.body-container, .body2-container,.body3-container{
+        border: #610000!important;
         background-color:var(--color2);
         color:Var(--color1);
     }

@@ -22,4 +22,8 @@ public class CategoryStorage {
             categoryRepo.save(category);
         }
 
+    public Category getCategoryByDifficultyLevel(String difficultyLevel) {
+        return categoryRepo.findByDifficultyLevel(difficultyLevel);
+    }
+
 }
