@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class CategoryController {
     private CategoryStorage categoryStorage;
 
-    public CategoryController(CategoryStorage categoryStorage) {
+    public CategoryController(CategoryStorage categoryStorage, AuthorStorage mockAuthorStorage, HashtagStorage mockHashtagStorage, HashtagStorage hashtagStorage) {
         this.categoryStorage = categoryStorage;
     }
 

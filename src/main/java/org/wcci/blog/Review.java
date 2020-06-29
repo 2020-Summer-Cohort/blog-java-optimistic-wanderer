@@ -27,7 +27,7 @@ public class Review {
     private Collection<Hashtag> hashtags;
     @ManyToMany
     private Collection<Comment> comments;
-    protected Review() {
+    protected Review(String title, String body, Author testAuthor, String publish_date, Category testCategory, Hashtag testTag) {
     }
 
     public Review(String title, String address, Double distance, String pathType, Category category, String mapURL, String postedDate, String content, Author authors, Hashtag... hashtags) {
