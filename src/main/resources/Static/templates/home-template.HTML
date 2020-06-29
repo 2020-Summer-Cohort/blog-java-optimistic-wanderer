@@ -13,9 +13,9 @@
   <nav class="home-nav">
     <h1 class="name">Optimistic Wanderer</h1>
         <div class="nav-bar">
-          <div class="nav-bar-list"><a href="./home.HTML">Home</a></div>
-          <div class="nav-bar-list"><a href="./category-list.html">Parks & Trails</a></div>
-          <div class="nav-bar-list"><a href="./author-list.html">Bloggers</a></div>
+          <div class="nav-bar-list" ><a th:href="@{'/'}">Home</a></div>
+          <div class="nav-bar-list" th:each="category:${categories}"><a th:text="${category.difficultyLevel}" th:href="@{'/category/' + ${category.difficultyLevel}}">Parks & Trails</a></div>
+          <div class="nav-bar-list" th:each="author:${authors}"><a th:text="${author.name}" th:href="@{'/author/' + ${author.name}}">Bloggers</a></div>
         </div>
       </nav>
       <div class="body-container">
@@ -32,7 +32,7 @@
     Now Start Wandering!
 </p>
 <p>Are you already an Optimistic Wanderer interested in leaving a new blog for a new park or trail? If so, start here:</p>
-<div class="leave-blog"><a href="./new-review.html">Leave a new trail blog!</a></div>
+<div class="leave-blog"><a th:href="@{'/new-review'}">Leave a new trail blog!</a></div>
 </div>
 </body>
 <footer class="footer-color">
