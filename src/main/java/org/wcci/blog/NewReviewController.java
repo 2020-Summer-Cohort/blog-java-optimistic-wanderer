@@ -12,13 +12,16 @@ public class NewReviewController {
     private HashtagStorage hashtagStorage;
     private ReviewStorage reviewStorage;
     private ReviewRepository reviewRepo;
+private AuthorRepository authorRepo;
 
-    public NewReviewController(CategoryStorage categoryStorage, AuthorStorage authorStorage, HashtagStorage hashtagStorage, ReviewStorage reviewStorage, ReviewRepository reviewRepo) {
+
+    public NewReviewController(CategoryStorage categoryStorage, AuthorStorage authorStorage, HashtagStorage hashtagStorage, ReviewStorage reviewStorage, ReviewRepository reviewRepo, AuthorRepository authorRepo) {
         this.categoryStorage = categoryStorage;
         this.authorStorage = authorStorage;
         this.hashtagStorage = hashtagStorage;
         this.reviewStorage = reviewStorage;
         this.reviewRepo = reviewRepo;
+        this.authorRepo = authorRepo;
     }
 
     @GetMapping("/new-review/")
@@ -29,7 +32,12 @@ public class NewReviewController {
     @PostMapping("review/add")
     public String addReview(String title, String address, Double distance, String pathType, String category, String map, String name, String date, String content) {
         Category thisCategory = categoryStorage.findCategoryByName(category);
+
         Author thisAuthor = authorStorage.findAuthorByName(name);
+        if (thisAuthor == null) {
+            thisAuthor=new Author(name);
+            authorRepo.save(thisAuthor);
+        }
         Review reviewToAdd = new Review(title, address, distance, pathType, thisCategory, map, date, content, thisAuthor);
 
         reviewRepo.save(reviewToAdd);
