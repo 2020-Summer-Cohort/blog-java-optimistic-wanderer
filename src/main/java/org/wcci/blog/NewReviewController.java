@@ -7,12 +7,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class NewReviewController {
-    private CategoryStorage categoryStorage;
-    private AuthorStorage authorStorage;
-    private HashtagStorage hashtagStorage;
-    private ReviewStorage reviewStorage;
-    private ReviewRepository reviewRepo;
-private AuthorRepository authorRepo;
+    private final CategoryStorage categoryStorage;
+    private final AuthorStorage authorStorage;
+    private final HashtagStorage hashtagStorage;
+    private final ReviewStorage reviewStorage;
+    private final ReviewRepository reviewRepo;
+    private final AuthorRepository authorRepo;
 
 
     public NewReviewController(CategoryStorage categoryStorage, AuthorStorage authorStorage, HashtagStorage hashtagStorage, ReviewStorage reviewStorage, ReviewRepository reviewRepo, AuthorRepository authorRepo) {
@@ -35,7 +35,7 @@ private AuthorRepository authorRepo;
 
         Author thisAuthor = authorStorage.findAuthorByName(name);
         if (thisAuthor == null) {
-            thisAuthor=new Author(name);
+            thisAuthor = new Author(name);
             authorRepo.save(thisAuthor);
         }
         Review reviewToAdd = new Review(title, address, distance, pathType, thisCategory, map, date, content, thisAuthor);

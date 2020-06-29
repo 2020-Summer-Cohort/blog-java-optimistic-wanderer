@@ -2,16 +2,16 @@ package org.wcci.blog;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
 public class CommentController {
-    private CommentRepository commentRepo;
-    private CommentStorage commentStorage;
-    private CategoryRepository categoryRepo;
-    private ReviewStorage reviewStorage;
+    private final CommentRepository commentRepo;
+    private final CommentStorage commentStorage;
+    private final CategoryRepository categoryRepo;
+    private final ReviewStorage reviewStorage;
 
 
     public CommentController(CommentRepository commentRepo, CommentStorage commentStorage, CategoryRepository categoryRepo, ReviewStorage reviewStorage) {
@@ -23,7 +23,7 @@ public class CommentController {
 
     @RequestMapping("comment/{comment}")
     public String showSingleComment(@PathVariable String comment, Model model) {
-        model.addAttribute("categories",categoryRepo.findAll());
+        model.addAttribute("categories", categoryRepo.findAll());
         model.addAttribute("comment", commentStorage.findCommentByComment(comment));
         return "review-template";
     }

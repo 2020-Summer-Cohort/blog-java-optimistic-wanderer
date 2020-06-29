@@ -7,6 +7,7 @@ import javax.persistence.ManyToMany;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collection;
+
 @Entity
 public class Comment {
     @Id

@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HashtagStorage {
-    private HashtagRepository hashtagRepo;
+    private final HashtagRepository hashtagRepo;
 
     public HashtagStorage(HashtagRepository hashtagRepo) {
         this.hashtagRepo = hashtagRepo;

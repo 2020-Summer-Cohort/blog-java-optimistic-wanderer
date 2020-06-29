@@ -5,13 +5,14 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+
 @Controller
 public class HashtagController {
 
-    private HashtagRepository hashtagRepo;
-    private HashtagStorage hashtagStorage;
-    private ReviewStorage reviewStorage;
-    private CategoryRepository categoryRepo;
+    private final HashtagRepository hashtagRepo;
+    private final HashtagStorage hashtagStorage;
+    private final ReviewStorage reviewStorage;
+    private final CategoryRepository categoryRepo;
 
 
     public HashtagController(HashtagRepository hashtagRepo, HashtagStorage hashtagStorage, ReviewStorage reviewStorage, CategoryRepository categoryRepo) {
@@ -20,6 +21,7 @@ public class HashtagController {
         this.reviewStorage = reviewStorage;
         this.categoryRepo = categoryRepo;
     }
+
     @RequestMapping("hashtag/{hashtag}")
     public String showSingleHashTag(@PathVariable String hashtag, Model model) {
         model.addAttribute("hashtags", hashtagStorage.getAllHashtags());
