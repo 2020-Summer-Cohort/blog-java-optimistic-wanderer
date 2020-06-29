@@ -15,8 +15,7 @@
     <section class="nav-bar">
         <div class="nav-bar-list" ><a th:href="@{'/'}">Home</a></div>
         <div class="nav-bar-list" ><a th:href="@{'/categories/'}">Parks & Trails</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/author/'}">Blogger's Post</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/hashtag/'}">Hashtag</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/authors/'}">Blogger's Post</a></div>
     </section>
 </nav>
       <div class="body-container">
@@ -33,7 +32,8 @@
   <ul >
        <li class="flex-item" th:each="categoryNav:${categories}" >
       <a class="navlink-color" th:text="${categoryNav.difficultyLevel}"
-       th:href="@{'/categories/' + ${categoryNav.difficultyLevel}}">Trail 1</a>
+       th:href="@{'/category/' + ${categoryNav.difficultyLevel}}"
+      >Trail 1</a>
        </li>
   </ul>
 </nav>

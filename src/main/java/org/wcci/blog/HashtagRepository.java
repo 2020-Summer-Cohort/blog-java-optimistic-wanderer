@@ -4,4 +4,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface HashtagRepository extends CrudRepository<Hashtag, Long> {
     Hashtag findByHashtag(String hashtag);
+    Hashtag findHashtagById(Long id);
 }

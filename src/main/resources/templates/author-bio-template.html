@@ -6,29 +6,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Optimistic Wanderer's Profile</title>
-    <link rel="stylesheet" href="../static/css/author-bio-layout.css"/>
-    <link rel="stylesheet" href="../static/css/author-bio-style.css"/>
+    <link rel="stylesheet" href="/css/author-bio-layout.css"/>
+    <link rel="stylesheet" href="/css/author-bio-style.css"/>
 </head>
 <body>
 <nav class="home-nav">
     <h1 class="name">Optimistic Wanderer</h1>
     <section class="nav-bar">
-        <div class="nav-bar-list" ><a th:href="@{'/'}">Home</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/category/'}">Parks & Trails</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/author/'}">Blogger's Post</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/hashtag/'}">Hashtag</a></div>
+        <div class="nav-bar-list"><a th:href="@{'/'}">Home</a></div>
+        <div class="nav-bar-list"><a th:href="@{'/categories/'}">Parks & Trails</a></div>
+        <div class="nav-bar-list"><a th:href="@{'/authors/'}">Blogger's Post</a></div>
     </section>
 </nav>
       <div class="body-container">
 <p>Optimistic Wanderer's Name:</p>
 <p>Blogs:</p>
-<nav>
-    <div>
-      <p><a href="./review.html">Trail 1</a></p>
-      <p>Posted On:</p>
-      <p>Blogger's Review:</p>
-    </div>
-</nav>
+          <nav>
+              <ul>
+                  <li th:each="review: ${author.reviews}">
+                      <p th:text="${review.title}">Trail 1</p>
+                      <p th:text="${review.postedDate}">Posted On:</p>
+                      <p th:text="${review.content}">Blogger's Review:</p></li>
+              </ul>
+          </nav>
 <p>Are you already an Optimistic Wanderer interested in leaving a new blog for a new park or trail? If so, start here:</p>
           <div class="leave-blog"><a th:href="@{'/new-review'}">Leave a new trail blog!</a></div>
 </div>

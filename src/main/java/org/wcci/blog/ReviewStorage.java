@@ -2,6 +2,8 @@ package org.wcci.blog;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class ReviewStorage {
     ReviewRepository reviewRepo;
@@ -25,4 +27,15 @@ public class ReviewStorage {
         return reviewRepo.findAll();
     }
 
+    public ReviewRepository getReviewRepo() {
+        return reviewRepo;
+    }
+
+    public void save(Review review) {
+        reviewRepo.save(review);
+    }
+
+//    public Review findByDifficultyLevel(Category difficultyLevel) {
+//        return reviewRepo.findByDifficultyLevel(difficultyLevel);
+//    }
 }

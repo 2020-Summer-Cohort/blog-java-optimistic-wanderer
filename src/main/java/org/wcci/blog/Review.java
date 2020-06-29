@@ -14,7 +14,7 @@ public class Review {
     private String address;
     private Double distance;
     private String pathType;
-    private String difficultyLevel;
+//    private String difficultyLevel;
     private String mapURL;
     private String postedDate;
     @Column(length = 2000000000)
@@ -25,16 +25,18 @@ public class Review {
     private Category category;
     @ManyToMany
     private Collection<Hashtag> hashtags;
+    @ManyToMany
+    private Collection<Comment> comments;
 
     protected Review() {
     }
 
-    public Review(String title, String address, Double distance, String pathType, String difficultyLevel, String mapURL, String postedDate, String content, Author authors, Hashtag... hashtags) {
+    public Review(String title, String address, Double distance, String pathType, Category category, String mapURL, String postedDate, String content, Author authors, Hashtag... hashtags) {
         this.title = title;
         this.address = address;
         this.distance = distance;
         this.pathType = pathType;
-        this.difficultyLevel = difficultyLevel;
+        this.category = category;
         this.mapURL = mapURL;
         this.postedDate = postedDate;
         this.content = content;
@@ -66,9 +68,6 @@ public class Review {
         return pathType;
     }
 
-    public String getDifficultyLevel() {
-        return difficultyLevel;
-    }
 
     public String getMapURL() {
         return mapURL;
@@ -86,6 +85,10 @@ public class Review {
         return authors;
     }
 
+    public Collection<Comment> getComments() {
+        return comments;
+    }
+
     public Collection<Hashtag> getHashtags() {
         return hashtags;
     }
@@ -94,4 +97,7 @@ public class Review {
         hashtags.add(hashtagToAdd);
     }
 
+    public void addComment(Comment commentToAdd) {comments.add(commentToAdd);
     }
+
+}

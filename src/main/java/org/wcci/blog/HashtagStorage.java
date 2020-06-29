@@ -4,13 +4,16 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class HashtagStorage {
-    HashtagRepository hashtagRepo;
+    private HashtagRepository hashtagRepo;
 
     public HashtagStorage(HashtagRepository hashtagRepo) {
         this.hashtagRepo = hashtagRepo;
     }
 
     public Hashtag getTagByName(String hashtag) {
+        return hashtagRepo.findByHashtag(hashtag);
+    }
+    public Hashtag findByHashtag(String hashtag) {
         return hashtagRepo.findByHashtag(hashtag);
     }
 
@@ -20,5 +23,11 @@ public class HashtagStorage {
 
     public void addTag(Hashtag hashtag){
         hashtagRepo.save(hashtag);
+    }
+    public void save(Hashtag hashtag) {
+        hashtagRepo.save(hashtag);
+    }
+    public Hashtag findHashtagById(Long id){
+        return hashtagRepo.findHashtagById(id);
     }
 }

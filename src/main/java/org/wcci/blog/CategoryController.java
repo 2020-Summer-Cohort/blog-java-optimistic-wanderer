@@ -18,10 +18,10 @@ public class CategoryController {
         model.addAttribute("categories", categoryStorage.getAllCategories());
         return "category-template";
     }
-    @RequestMapping("category/{difficultyLevel}")
+    @RequestMapping("/category/{difficultyLevel}")
     public String showSingleCategory(@PathVariable String difficultyLevel, Model model) {
-        model.addAttribute("category", categoryStorage.getCategoryByDifficultyLevel(difficultyLevel));
-        model.addAttribute("categories", categoryStorage.getAllCategories());
+            model.addAttribute("category", categoryStorage.findCategoryByName(difficultyLevel));
+            model.addAttribute("categories", categoryStorage.getAllCategories());
         return "review-template";
     }
 

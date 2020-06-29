@@ -15,21 +15,20 @@
     <h1 class="name">Optimistic Wanderer</h1>
     <section class="nav-bar">
         <div class="nav-bar-list" ><a th:href="@{'/'}">Home</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/category/'}">Parks & Trails</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/author/'}">Blogger's Post</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/hashtag/'}">Hashtag</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/categories/'}">Parks & Trails</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/authors/'}">Blogger's Post</a></div>
     </section>
 </nav>
 <main>
-    <h2 th:text="${tag.name}">Hashtag</h2>
+    <h2 th:text="'&#35' + ${hashtag.hashtag}">Hashtag</h2>
     <section >
-        <a th:each="post:${tag.posts}" th:href="@{'/post/' + ${post.title}}">
+        <a th:each="review:${hashtag.reviews}" th:href="@{'/review/' + ${review.title}}">
             <div class="post">
-                <h3 th:text="${post.title}">Title</h3>
-                <p th:text="${post.author.name}">Author</p>
-                <p th:text="${post.publishDate}">Posted On:</p>
-                <p th:text="${post.getFirstLine()}">Review
-                </p>
+<!--                <h3 th:text="${review.title}">Title</h3>-->
+<!--                <p th:text="${review.author.name}">Author</p>-->
+<!--                <p th:text="${review.publishDate}">Posted On:</p>-->
+<!--                <p th:text="${review.content}">Review-->
+<!--                </p>-->
             </div>
         </a>
     </section>

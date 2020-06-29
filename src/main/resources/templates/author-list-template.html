@@ -6,28 +6,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Optimistic Wanderer List</title>
-    <link rel="stylesheet" href="./src/main/resources/Static/css/blogger-list-layout.css"/>
-    <link rel="stylesheet" href="./src/main/resources/Static/css/blogger-list-style.css"/>
+    <link rel="stylesheet" href="/css/author-list-layout.css"/>
+    <link rel="stylesheet" href="/css/author-bio-style.css"/>
   </head>
 <body>
 <nav class="home-nav">
     <h1 class="name">Optimistic Wanderer</h1>
     <section class="nav-bar">
         <div class="nav-bar-list" ><a th:href="@{'/'}">Home</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/category/'}">Parks & Trails</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/author/'}">Blogger's Post</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/hashtag/'}">Hashtag</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/categories/'}">Parks & Trails</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/authors/'}">Blogger's Post</a></div>
     </section>
 </nav>
       <div class="body-container">
 <p>
     <p>Looking for a specific blogger? Start here:</p>
 </p>
-<nav>
-  <ul>
-    <li><a href="./author-bio.html">Blogger 1</a></li>
-  </ul>
-  </nav>
+          <nav>
+              <ul >
+                  <li class="flex-item" th:each="authorNav:${authors}" >
+                      <a class="navlink-color" th:text="${authorNav.name}"
+                         th:href="@{'/author/' + ${authorNav.name}}"
+                      >Trail 1</a>
+                  </li>
+              </ul>
+          </nav>
   <p>Are you already an Optimistic Wanderer interested in leaving a new blog for a new park or trail? If so, start here:</p>
           <div class="leave-blog"><a th:href="@{'/new-review'}">Leave a new trail blog!</a></div>
   </div>

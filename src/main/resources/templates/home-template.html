@@ -15,8 +15,7 @@
     <section class="nav-bar">
         <div class="nav-bar-list" ><a th:href="@{'/'}">Home</a></div>
         <div class="nav-bar-list" ><a th:href="@{'/categories/'}">Parks & Trails</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/author/'}">Blogger's Post</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/hashtag/'}">Hashtag</a></div>
+        <div class="nav-bar-list" ><a th:href="@{'/authors/'}">Blogger's Post</a></div>
     </section>
 </nav>
 <div class="body-container">
@@ -32,6 +31,14 @@
     <p>
         Now Start Wandering!
     </p>
+    <nav class="hashtag-nav">
+        <ul class="hashtag-container">
+            <li class="flex-container" th:each="hash: ${hashtags}">
+                <a class="hashtag-links" th:text="'&#35' + ${hash.hashtag}"
+                   th:href="@{'/hashtag/' + ${hash.hashtag}}"></a>
+            </li>
+        </ul>
+    </nav>
     <p>Are you already an Optimistic Wanderer interested in leaving a new blog for a new park or trail? If so, start here:</p>
     <div class="leave-blog"><a th:href="@{'/new-review'}">Leave a new trail blog!</a></div>
 </div>

@@ -21,6 +21,30 @@ public class HashtagController {
         this.reviewStorage = reviewStorage;
         this.categoryRepo = categoryRepo;
     }
+    @RequestMapping("hashtag/{hashtag}")
+    public String showSingleHashTag(@PathVariable String hashtag, Model model) {
+        model.addAttribute("categories",categoryRepo.findAll());
+        model.addAttribute("hashtag", hashtagStorage.findByHashtag(hashtag));
+        return "hashtag-template";
+    }
 
+    @PostMapping("hashtags/add")
+    public String addHashtag(String hashtag, String title) {
+        Hashtag hashtagToAdd = hashtagRepo.findByHashtag(hashtag) ;
+        if (hashtagToAdd == null) {
+            hashtagToAdd = new Hashtag(hashtag);
+            hashtagRepo.save(hashtagToAdd);
+        }
+
+        Review review = reviewStorage.findByTitle(title);
+        review.addHashtag(hashtagToAdd);
+        reviewStorage.save(review);
+        return "redirect:/categories/";
+    }
+    @GetMapping("hashtags/{id}")
+    public String showSingleHashtag(@PathVariable Long id, Model model) {
+        model.addAttribute("hashtag", hashtagRepo.findById(id).get());
+        return "hashtag-template";
+    }
 
 }

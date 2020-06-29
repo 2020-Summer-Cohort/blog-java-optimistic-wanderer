@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en"
       xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:th="http://www.thymeleaf.org"><head>
+      xmlns:th="http://www.thymeleaf.org">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Trail 1</title>
-    
+
     <link rel="stylesheet" href="/css/review-layout.css"/>
     <link rel="stylesheet" href="/css/review-style.css"/>
 </head>
@@ -15,28 +16,56 @@
     <section class="nav-bar">
         <div class="nav-bar-list" ><a th:href="@{'/'}">Home</a></div>
         <div class="nav-bar-list" ><a th:href="@{'/categories/'}">Parks & Trails</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/author/'}">Blogger's Post</a></div>
-        <div class="nav-bar-list" ><a th:href="@{'/hashtag/'}">Hashtag</a></div>
+        <div class="nav-bar-list"><a th:href="@{'/authors/'}">Blogger's Post</a></div>
     </section>
 </nav>
-      <div class="body-container">
-      <h2 th:text="${review.title}">Trail 1</h2>
-<p th:text="${review.address}">Address:</p>
-<p th:text="${review.distance}">Trail Distance:</p>
-<p th:text="${review.difficultyLevel}">Difficulty Level:</p>
-<p th:text="${review.pathType}">Path Type:</p>
-<p th:text="${review.mapURL}">Trail Map:</p>
-<p th:text="${review.authors}">Optimistic Wanderer's Name: <a href="./author-bio.html">Blogger 1</a></p>
-<p th:text="${review.postedDate}">Posted On:</p>
-<p th:text="${review.content}">Optimistic Wanderer's Review:</p>
-      </div>
-      <div class="body2-container">
-<div><h3>Add a new comment to this trail:</h3>
-<p>Optimistic Wanderer's Name:</p>
-<p>Posted On:</p>
-<p>Optimistic Wanderer's Review:</p>
+<div class="body-container" th:each="review: ${category.reviews}">
+    <h2 th:text="${review.title}">Trail 1</h2>
+    <p th:text="'Address: '+${review.address}">Address:</p>
+    <p th:text="'Distance: '+${review.distance}">Trail Distance:</p>
+    <img th:src="${review.mapURL}" alt="Image">
+    <p th:text="'Path Type: '+${review.pathType}">Path Type:</p>
+    <div th:each="navHashtag: ${review.hashtags}">
+        <a class="hashtag" th:text="'&#35' + ${navHashtag.hashtag}"
+           th:href="@{'/hashtag/' + ${navHashtag.hashtag}}"></a>
+    </div>
+    <div th:each="'navName: '+${review.authors}">Optimistic Wanderer's Name:
+        <a th:text="${navName}"
+           th:href="@{'/author/' + ${navName}}">Blogger 1</a>
+    </div>
+    <p th:text="'Posted On: '+${review.postedDate}">Posted On:</p>
+    <p th:text="${review.content}">Optimistic Wanderer's Review:</p>
+    <br>
+    <form id="add-hashtag" action="/hashtags/add" method="POST">
+        <label>Insert new hashtag for this review:</label>
+        <input type="text" name="hashtag"/>
+        <input type="hidden" name="title" th:value="${review.title}"/>
+        <button id="submit-button" type="submit">Submit</button>
+    </form>
+
+    <h3>Add a new comment to this trail:</h3>
+    <form id="add-comment" action="/comments/add" method="POST">
+        <label>Optimistic Wanderer's Name:</label>
+        <input type="text" name="name"/>
+        <label>Posted On:</label>
+        <input type="date" name="date"/>
+        <label>Insert new comment for this review:</label>
+        <textarea name="comment"></textarea>
+        <input type="hidden" name="title" th:value="${review.title}"/>
+        <button id="submit" type="submit">Submit</button>
+    </form>
+    <h3>Comments:</h3>
+    <div class="comment-container" th:each="navComment: ${review.comments}">
+        <p class="comment" th:text="'Posted On: ' + ${navComment.date}"
+           th:href="@{'/comment/' + ${navComment.date}}"></p>
+        <p class="comment" th:text="'By: ' + ${navComment.name}"
+           th:href="@{'/comment/' + ${navComment.name}}"></p>
+        <p class="comment" th:text="'Comment: ' + ${navComment.comment}"
+           th:href="@{'/comment/' + ${navComment.comment}}"></p>
+    </div>
 </div>
-      </div>
+
+</div>
       <div class="body3-container">
         <p>Are you already an Optimistic Wanderer interested in leaving a new blog for a new park or trail? If so, start here:</p>
           <div class="leave-blog"><a th:href="@{'/new-review'}">Leave a new trail blog!</a></div>
