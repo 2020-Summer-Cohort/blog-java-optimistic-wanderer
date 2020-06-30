@@ -6,13 +6,13 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 public class ReviewController {
 
-    private final ReviewStorage reviewStorage;
-    private final AuthorRepository authorRepo;
-    private final HashtagRepository hashtagRepo;
-    private final ReviewRepository reviewRepo;
-    private final CategoryRepository categoryRepo;
-    private final CategoryStorage categoryStorage;
-    private final AuthorStorage authorStorage;
+    private ReviewStorage reviewStorage;
+    private AuthorRepository authorRepo;
+    private HashtagRepository hashtagRepo;
+    private ReviewRepository reviewRepo;
+    private CategoryRepository categoryRepo;
+    private CategoryStorage categoryStorage;
+    private AuthorStorage authorStorage;
 
     public ReviewController(ReviewStorage reviewStorage, AuthorRepository authorRepo, HashtagRepository hashtagRepo, ReviewRepository reviewRepo, CategoryRepository categoryRepo, CategoryStorage categoryStorage, AuthorStorage authorStorage) {
         this.reviewStorage = reviewStorage;
@@ -26,9 +26,9 @@ public class ReviewController {
 
     @GetMapping("/review/{title}")
     public String showSingleCategory(@PathVariable String title, Model model) {
-        model.addAttribute("categories", categoryRepo.findAll());
+        model.addAttribute("categories",categoryRepo.findAll());
         model.addAttribute("review", reviewStorage.findByTitle(title));
-        model.addAttribute("hashtags", hashtagRepo.findAll());
+        model.addAttribute("hashtags",hashtagRepo.findAll());
         return "review-template";
     }
 

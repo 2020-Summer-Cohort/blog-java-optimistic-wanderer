@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CommentStorage {
-    private final CommentRepository commentRepo;
+    private CommentRepository commentRepo;
 
     public CommentStorage(CommentRepository commentRepo) {
         this.commentRepo = commentRepo;

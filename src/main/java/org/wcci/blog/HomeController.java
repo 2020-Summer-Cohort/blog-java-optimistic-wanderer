@@ -20,7 +20,7 @@ public class HomeController {
 
     @GetMapping({"", "/"})
     public String XHome(Model model) {
-        model.addAttribute("categories", categoryRepo.findAll());
+        model.addAttribute("categories",categoryRepo.findAll());
         model.addAttribute("hashtags", hashtagRepo.findAll());
         model.addAttribute("authors", authorRepo.findAll());
         return "home-template";

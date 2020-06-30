@@ -20,7 +20,7 @@ public class Hashtag {
     protected Hashtag() {
     }
 
-    public Hashtag(String hashtag, Review... reviews) {
+    public Hashtag(String hashtag, Review ...reviews) {
         this.hashtag = hashtag;
         this.reviews = new ArrayList<>(Arrays.asList(reviews));
     }

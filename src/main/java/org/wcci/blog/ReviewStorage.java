@@ -2,6 +2,8 @@ package org.wcci.blog;
 
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class ReviewStorage {
     ReviewRepository reviewRepo;
@@ -13,7 +15,6 @@ public class ReviewStorage {
     public Review findByTitle(String title) {
         return reviewRepo.findByTitle(title);
     }
-
     public Review findByID(long id) {
         return reviewRepo.findById(id).get();
     }
