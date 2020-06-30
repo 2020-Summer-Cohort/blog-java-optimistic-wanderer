@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class AuthorController {
     private AuthorStorage authorStorage;
 
-    public AuthorController(CategoryStorage mockCategoryStorage, AuthorStorage authorStorage, HashtagStorage mockTagStorage){
+    public AuthorController(AuthorStorage authorStorage){
         this.authorStorage = authorStorage;
     }
 
