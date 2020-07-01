@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class CategoryController {
-    private CategoryStorage categoryStorage;
+    private final CategoryStorage categoryStorage;
 
     public CategoryController(CategoryStorage categoryStorage) {
         this.categoryStorage = categoryStorage;
@@ -18,10 +18,11 @@ public class CategoryController {
         model.addAttribute("categories", categoryStorage.getAllCategories());
         return "category-template";
     }
+
     @RequestMapping("/category/{difficultyLevel}")
     public String showSingleCategory(@PathVariable String difficultyLevel, Model model) {
-            model.addAttribute("category", categoryStorage.findCategoryByName(difficultyLevel));
-            model.addAttribute("categories", categoryStorage.getAllCategories());
+        model.addAttribute("category", categoryStorage.findCategoryByName(difficultyLevel));
+        model.addAttribute("categories", categoryStorage.getAllCategories());
         return "review-template";
     }
 

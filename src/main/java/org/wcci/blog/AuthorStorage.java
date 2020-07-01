@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class AuthorStorage {
-    private AuthorRepository authorRepo;
+    private final AuthorRepository authorRepo;
 
     public AuthorStorage(AuthorRepository authorRepo) {
         this.authorRepo = authorRepo;

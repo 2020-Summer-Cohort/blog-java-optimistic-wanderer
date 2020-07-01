@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 public class AuthorController {
-    private AuthorStorage authorStorage;
+    private final AuthorStorage authorStorage;
 
-    public AuthorController(AuthorStorage authorStorage){
+    public AuthorController(AuthorStorage authorStorage) {
         this.authorStorage = authorStorage;
     }
 
@@ -18,6 +18,7 @@ public class AuthorController {
         model.addAttribute("authors", authorStorage.getAllAuthors());
         return "author-list-template";
     }
+
     @RequestMapping("/author/{name}")
     public String showSingleAuthor(@PathVariable String name, Model model) {
         model.addAttribute("author", authorStorage.findAuthorByName(name));

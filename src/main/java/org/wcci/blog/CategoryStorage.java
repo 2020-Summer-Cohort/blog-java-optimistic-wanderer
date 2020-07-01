@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class CategoryStorage {
-    private CategoryRepository categoryRepo;
+    private final CategoryRepository categoryRepo;
 
     public CategoryStorage(CategoryRepository categoryRepo) {
         this.categoryRepo = categoryRepo;

@@ -14,7 +14,7 @@ public class Review {
     private String address;
     private Double distance;
     private String pathType;
-//    private String difficultyLevel;
+    //    private String difficultyLevel;
     private String mapURL;
     private String postedDate;
     @Column(length = 2000000000)
@@ -27,6 +27,7 @@ public class Review {
     private Collection<Hashtag> hashtags;
     @ManyToMany
     private Collection<Comment> comments;
+
     protected Review() {
     }
 
@@ -96,7 +97,8 @@ public class Review {
         hashtags.add(hashtagToAdd);
     }
 
-    public void addComment(Comment commentToAdd) {comments.add(commentToAdd);
+    public void addComment(Comment commentToAdd) {
+        comments.add(commentToAdd);
     }
 
     public void addReview(Review reviewToAdd) {
